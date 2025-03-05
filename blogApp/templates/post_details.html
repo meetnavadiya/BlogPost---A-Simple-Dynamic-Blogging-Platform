@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow-lg mx-auto" style="max-width: 800px;">
+    <div class="card-body">
+        {% if post.image %}
+            <img src="{{ post.image.url }}" class="post-image w-100 mb-4">
+        {% endif %}
+        
+        <h1 class="mb-4">{{ post.title }}</h1>
+        
+        <div class="post-content mb-4">
+            {{ post.content|linebreaks }}
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted">{{ post.created_at|date:"F d, Y" }}</small>
+            <div class="btn-group">
+                <a href="{% url 'post_list' %}" class="btn btn-custom">
+                    <i class="fas fa-arrow-left"></i> Back to List
+                </a>
+                <a href="{% url 'post_update' post.pk %}" class="btn btn-warning">
+                    <i class="fas fa-edit"></i> Edit
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
