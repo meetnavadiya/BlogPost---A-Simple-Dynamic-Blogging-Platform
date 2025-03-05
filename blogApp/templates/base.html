@@ -73,22 +73,16 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container d-flex align-items-center justify-content-between w-100">
-
-            <!-- Blog Title on the Left -->
             <a class="navbar-brand fw-bold" href="/">My Blog</a>
-
-            <!-- If user is logged in, show welcome text & search bar -->
             {% if user.is_authenticated %}
                 <span class="text-light fw-semibold mx-3">Welcome, {{ user.username }}</span>
 
-                <!-- Search Bar -->
                 <form action="" method="GET" class="search-form d-flex">
                     <input type="text" name="q" class="search-input" placeholder="Search..." />
                     <button type="submit" class="btn btn-custom ms-2">Search</button>
                 </form>
             {% endif %}
 
-            <!-- Buttons on the Right -->
             <div class="d-flex align-items-center">
                 {% if user.is_authenticated %}
                     <a href="{% url 'post_create' %}" class="btn btn-custom me-3">Create New Post</a>

@@ -68,7 +68,7 @@ def signup(request):
             else:
                 User.objects.create_user(username=username, password=password)
                 messages.success(request, 'Signup successful! Please log in.')
-                return redirect('login')  # Redirect to login page after signup
+                return redirect('login')
         else:
             messages.error(request, 'Passwords do not match')
     return render(request, 'signup.html')
@@ -80,11 +80,11 @@ def user_login(request):
         user = authenticate(username=username, password=password)
         if user:
             login(request, user)
-            return redirect('post_list')  # Redirect to user blog post page
+            return redirect('post_list')
         else:
             messages.error(request, 'Invalid credentials')
     return render(request, 'login.html')
 
 def user_logout(request):
     logout(request)
-    return redirect('login')  # Redirect to login page after logout
+    return redirect('login') 
